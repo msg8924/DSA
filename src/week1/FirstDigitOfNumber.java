@@ -22,15 +22,20 @@ public class FirstDigitOfNumber {
     }
 
 
-
+    //Time Complexity - O(N)
     public static int firstDigitNumber(int n) {
-        int digit = 0;
-        while (n != 0) {
-            digit = n % 10;
+        while (n >= 10) {
             n /= 10;
         }
-        return digit;
+        return n;
     }
+
+    //Time Complexity - O(1)
+    public static int firstDigitNumberUsingLog(int n) {
+        int pow = (int)Math.log10(n);
+        return (int)(n / Math.pow(10,pow));
+    }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -42,6 +47,8 @@ public class FirstDigitOfNumber {
         System.out.printf("The first digit of %d is %d", originalN, firstDigitApproach1(n));
         System.out.println();
         System.out.printf("The first digit of %d is %d", originalN, firstDigitApproach2(n));
+        System.out.println();
+        System.out.printf("The first digit of %d is %d", originalN, firstDigitNumberUsingLog(n));
         sc.close();
 
     }

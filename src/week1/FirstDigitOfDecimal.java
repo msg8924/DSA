@@ -9,27 +9,30 @@ public class FirstDigitOfDecimal {
         return shiftNumber(n * 10);
     }
 
-    public static int firstDigit(int n) {
+    public static int firstDigitRecursion(int n) {
         if (n < 10) return n;
         int num = n / 10;
         if (num < 10) return num;
-        return firstDigit(num / 10);
+        return firstDigitRecursion(num / 10);
     }
 
+    public static int firstDigit(double n) {
+        int pow = (int)Math.log10(n);
+        return (int) (n / Math.pow(10,pow));
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double n = sc.nextDouble();
         double originalN = n;
         int digit;
         n = Math.abs(n);
-        if (n > 1) {
-            digit  = firstDigit((int)n);
-        } else {
-            double shiftedNumber = shiftNumber(n);
-            digit = (firstDigit((int)shiftedNumber));
+        if (n < 1) {
+            n = shiftNumber(n);
         }
 
-        System.out.printf("The first digit of %g is %d", originalN, digit);
+        System.out.printf("The first digit of %g is %d", originalN, firstDigitRecursion((int)n));
+        System.out.println();
+        System.out.printf("The first digit of %g is %d", originalN, firstDigit(n));
 
 
     }
