@@ -46,10 +46,6 @@ public class PrimeFactorization {
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        // get a list of prime numbers
-        // divide the number by prime number
-        // with the quotient attempt to divide again with the prime number
-        // till the quotient is a prime number
         System.out.printf("Prime factorization of %d is ", n);
         factorizeApproach1(n);
         System.out.println();
