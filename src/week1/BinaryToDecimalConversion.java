@@ -23,9 +23,13 @@ public class BinaryToDecimalConversion {
 
     public static int convertEfficient(String binary) {
         int result = 0;
-        for(int i = 0; i < binary.length(); i++) {
+        int k = 1;
+
+        //Can be used to reverse a string too.
+        for(int i = binary.length() -1 ; i>=0; i--) {
             int digit = (binary.charAt(i)-'0');
-            result += (int) (digit * Math.pow(2,binary.length() - i -1));
+            result += (int) (digit * k);
+            k *= 2;
         }
         System.out.printf("%s represented as a decimal %d",binary, result);
         return result;
